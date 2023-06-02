@@ -54,6 +54,22 @@ const calcularPrecioCuota = (precioFinanciado, cantidadCuotas) => {
 }
 
 
+    const precioContado = parseInt(valorProducto * dolar * iva * ganancia);
+    
+
+    console.log(cuotas);
+    document.write(`<p><strong>PRECIO CONTADO: </strong> $ ${precioContado}</p>`)
+
+    if (!cuotas) return
+    const precioFinanciado = parseInt(precioContado * interesFinanciacion);
+    const precioCuota = +(precioFinanciado / cuotas).toFixed(2);
+
+    
+    document.write(`<p><strong>${cuotas} cuotas de $ ${parseInt(precioFinanciado / 12)}</strong></p>`)  
+    document.write(`<p><small>PRECIO LISTA: </small> $ ${precioCuota}</p><hr>`) 
+
+ }
+
  calcularPrecios(producto1,12);
  calcularPrecios(producto2,6);
  calcularPrecios(producto3,3);

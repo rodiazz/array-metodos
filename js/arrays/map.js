@@ -91,23 +91,32 @@ const  paisesLatinoamerica  =  [
     } ,
 ] ;
 
-const tableBodyHTML = document.getElementById("tableBody");
+//Romper referencia entre arrays y objetos
+// !Se mantienen referencias
+//const array2 = array1;
+//? Se rompe la referencia 
+//const array2 = array1.map((val) => val);
+//const array2 = array1.slice();
+//const array 2 = [...array1];
+//const array2 = Array.from(array1);
 
+const  copyPaisesLatinoamerica  = [...paisesLatinoamerica];
 
-paisesLatinoamerica.forEach(function (algo, index)  {
-    const posicion = String(index + 1).padStart(2, "0")
-    //document.write(`${posicion} - ${algo.nombre} <br>`)
-    tableBodyHTML.innerHTML += `<tr>
-        <th scope="row">${posicion}</th>
-        <td>${algo.nombre}</td>
-        <td>${algo.capital}</td>
-        <td>${algo.ubicacion}</td>
-        <td class="text-center">${algo.habitantes}</td>
-      </tr>`;
+const arrayModificado = paisesLatinoamerica.map (function(pais) {
+
+    const paisName = pais.nombre.toUpperCase()
+    const pop = new Intl.NumberFormat ("es-AR", {
+        notation: "compact"
+    })
+
+    //nameUpperCase = nameUpperCase.substring(0, 2)
+   // console.log(pais.capital); 
+   return {
+    name: paisName,
+    population: pop.format(pais.habitantes),
+    newPropery: "Esto es un nuevo"
+   }
 })
 
-
-
-//for (let pais of paisesLatinoamerica ) {
-//    console.log(pais.nombre);
-//}
+console.log(paisesLatinoamerica);
+console.log(arrayModificado);
